@@ -2,8 +2,11 @@ const webpack = require('webpack'),
       ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-    entry: './src/index',
-    output: { filename: './dist/index.js' },
+    entry: {
+        index: './src/index'
+    },
+    output: { filename: './dist/[name].js' },
+    devtool: "source-map",
     module: {
         loaders: [{
             test: /\.js$/,
@@ -13,12 +16,11 @@ module.exports = {
             }
         }, {
             test: /\.scss$/,
-            loader: ExtractTextPlugin.extract('css?sourceMap!sass')
+            loader: ExtractTextPlugin.extract('css?sourceMap!sass?sourceMap')
         }]
     },
     plugins: [
-        new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin('./dist/app.css', {
+        new ExtractTextPlugin('./dist/[name].css', {
             allowChunks: true
         })
     ]
