@@ -55,6 +55,7 @@ class Notes extends Component {
                                 key={noteIndex}
                                 delete={Notes.deleteNote.bind(this, noteId)}
                                 maximized={this.state.activeNoteId === noteId}
+                                editMode={this.state.activeNoteId === noteId}
                                 toggleMinMax={this.toggleMinMax.bind(this, noteId)}
                                 onChange={this.updateNote.bind(this)}
                             />

@@ -24,45 +24,23 @@ class Note extends React.Component {
 
         this.setState({defaultMaximized: !this.state.defaultMaximized});
     }
-
-    componentDidUpdate(oldProps, oldState) {
-        if (typeof this.props.draggable === 'undefined' || this.props.draggable) {
-            if (
-                typeof this.props.maximized === 'undefined' && oldState.defaultMaximized !== this.state.defaultMaximized ||
-                typeof this.props.maximized !== 'undefined' && oldProps.maximized !== this.props.maximized
-            ) {
-                if (this.props.maximized || typeof this.props.maximized === 'undefined' && this.state.defaultMaximized) {
-                    // set draggable
-                    $(this.refs.note).draggable({
-                        containment: 'parent',
-                        handle: '.note__header'
-                    }).css('position', 'absolute');
-                } else if (
-                    typeof this.props.maximized === 'undefined' && oldState.defaultMaximized && !this.state.defaultMaximized ||
-                    typeof this.props.maximized !== 'undefined' && oldProps.maximized && !this.props.maximized
-                ) {
-                    //unset draggable
-                    $(this.refs.note).draggable('destroy').css({
-                        position:  'relative',
-                        left: 0,
-                        top: 0
-                    });
-                }
-            }
-        }
-    }
     
     render() {
-        var maximized, minMaxIconClassName, showActions;
+        var maximized, minMaxIconClassName, showActions, noteClassName;
 
         maximized = (typeof this.props.maximized === 'undefined') ?
             this.state.defaultMaximized :
             this.props.maximized;
         minMaxIconClassName = 'note__icon note__' + (maximized ? 'minimize' : 'maximize');
         showActions = typeof this.props.showActions !== 'undefined' ? this.props.showActions : true;
+        noteClassName = [
+            "note",
+            this.props.editMode ? 'note--edit-mode' : '',
+            !maximized ? 'note--minimized' : ''
+        ].join(" ").trim();
 
         return (
-            <article ref="note" className={"note" + (!maximized ? ' note--minimized' : '')}>
+            <article ref="note" className={noteClassName}>
                 <header
                     className="note__header"
                     style={{
