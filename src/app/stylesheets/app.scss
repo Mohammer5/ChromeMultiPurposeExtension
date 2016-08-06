@@ -1,0 +1,35 @@
+$fa-font-path: '/Users/jgs/dev/newtab/node_modules/font-awesome/fonts';
+@import "~font-awesome/scss/font-awesome";
+@import '~normalize-scss';
+@include normalize();
+
+html, body {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  margin: 0;
+
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300;
+}
+
+.app {
+  height: 100%;
+
+  &__wrapper {
+    height: 100%;
+    background: center center / cover no-repeat;
+  }
+
+  &__content {
+    height: calc(100vh - 60px);
+    box-sizing: border-box;
+    padding: 20px 0;
+    position: relative;
+  }
+
+  &__content-wrap {
+    height: 100%;
+  }
+}

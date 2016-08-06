@@ -1,0 +1,16 @@
+@import '_placeholders/button';
+
+.header {
+  border-bottom: 3px solid #333;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.4);
+  height: 60px;
+  line-height: 60px;
+  box-sizing: border-box;
+  padding-top: 10px;
+
+  &__init-new-note {
+    @extend %button;
+    margin: 0 10px 10px;
+  }
+}

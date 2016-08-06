@@ -1,0 +1,22 @@
+%icon {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  overflow: hidden;
+  display: block;
+
+  &:before {
+    content: '';
+    font-family: fontawesome, sans-serif;
+    height: 100%;
+    width: 100%;
+    background: white;
+    border-radius: 3px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    cursor: pointer;
+    line-height: 20px;
+  }
+}
