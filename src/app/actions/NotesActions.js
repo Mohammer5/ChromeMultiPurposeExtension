@@ -8,6 +8,13 @@ const NotesActions = {
             data: noteData
         });
     },
+
+    update: function(noteData) {
+        Dispatcher.handleNotesAction({
+            type: NotesConstants.NOTES_UPDATE,
+            data: noteData
+        });
+    },
     
     delete: function(id) {
         Dispatcher.handleNotesAction({
@@ -18,10 +25,29 @@ const NotesActions = {
         });
     },
     
-    update: function(noteData) {
+    deleteActiveNote: function(id) {
+        this.unsetActiveNote();
         Dispatcher.handleNotesAction({
-            type: NotesConstants.NOTES_UPDATE,
-            data: noteData
+            type: NotesConstants.NOTES_DELETE,
+            data: {
+                id
+            }
+        });
+    },
+    
+    setActiveNote: function(id) {
+        Dispatcher.handleNotesAction({
+            type: NotesConstants.SET_ACTIVE_NOTE,
+            data: {
+                id
+            }
+        });
+    },
+    
+    unsetActiveNote: function() {
+        Dispatcher.handleNotesAction({
+            type: NotesConstants.UNSET_ACTIVE_NOTE,
+            data: {}
         });
     }
 };

@@ -1,5 +1,4 @@
 import {ReduceStore} from 'flux/utils';
-import _ from 'lodash';
 import NotesStorage from '../services/NotesStorage';
 import NotesConstants from '../constants/NotesContants';
 import PageConstants from '../constants/PageConstants';
@@ -8,7 +7,13 @@ import Dispatcher from '../../dispatcher';
 
 class NotesStore extends ReduceStore {
     getNotes() {
-        return this.state.getAll();
+        return this._state.getAll();
+    }
+    
+    getNoteNyId(id) {
+        return this._state.get((note) => {
+            return note.getId() === id;
+        });
     }
     
     getInitialState() {
