@@ -12,7 +12,8 @@ class Note extends React.Component {
     onKeyUp() {
         this.props.onChange({
             headline: this.refs.headline.value,
-            text: this.refs.text.value
+            text: this.refs.text.value,
+            id: this.props.id
         });
     }
 

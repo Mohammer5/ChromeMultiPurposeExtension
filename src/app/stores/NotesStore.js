@@ -28,8 +28,9 @@ class NotesStore extends ReduceStore {
             } else if (NotesConstants.NOTES_DELETE === action.type) {
                 state.unset(action.data.id);
                 this.__emitChange();
-            } else if (NotesConstants.NOTES_CREATE === action.type) {
-                state.notes.update(action.data.id, {
+            } else if (NotesConstants.NOTES_UPDATE === action.type) {
+                console.log('NotesStore NOTES_UPDATE', action.data);
+                state.update(action.data.id, {
                     headline: action.data.headline,
                     text: action.data.text
                 });

@@ -27,7 +27,7 @@ class NotesStorage extends ChromeStorageService {
                 note.setHeadline(updates.headline);
             }
             if (updates.text) {
-                note.setText(updates.headline);
+                note.setText(updates.text);
             }
         }
     }

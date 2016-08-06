@@ -35,6 +35,11 @@ class Notes extends Component {
             NotesActions.setActiveNote(noteId);
         }
     }
+
+    updateNote(noteData) {
+        console.log('updateNote', noteData);
+        NotesActions.update(noteData);
+    }
     
     render() {
         return (
@@ -46,10 +51,12 @@ class Notes extends Component {
                             <Note 
                                 headline={note.getHeadline()}
                                 text={note.getText()}
+                                id={noteId}
                                 key={noteIndex}
                                 delete={Notes.deleteNote.bind(this, noteId)}
                                 maximized={this.state.activeNoteId === noteId}
                                 toggleMinMax={this.toggleMinMax.bind(this, noteId)}
+                                onChange={this.updateNote.bind(this)}
                             />
                         ); 
                     })
